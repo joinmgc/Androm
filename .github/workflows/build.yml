@@ -1,0 +1,51 @@
+name: Build Androm Lab
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+
+jobs:
+  server:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: server/package-lock.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - run: npm ci --prefix server
+      - run: npm run build --prefix server
+      - run: npm test --prefix server
+      - name: Package the server and lab initializer
+        run: |
+          mkdir -p dist
+          tar -czf dist/androm-server.tar.gz README.md scripts/init-lab.mjs \
+            server/package{,-lock}.json server/server.js server/fixtures server/public server/test
+      - uses: actions/upload-artifact@v4
+        with:
+          name: androm-server
+          path: dist/androm-server.tar.gz
+          if-no-files-found: error
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - run: sdkmanager "platforms;android-35" "build-tools;34.0.0" "platform-tools"
+      - run: node scripts/init-lab.mjs 127.0.0.1
+      - run: bash builder/build.sh
+      - name: Verify the permissions in the signed package
+        run: |
+          permissions=$("$ANDROID_HOME/build-tools/34.0.0/aapt" dump permissions dist/androm-lab.apk)
+          test "$(echo "$permissions" | sed -n "s/^uses-permission: name='\([^']*\)'.*/\1/p")" = android.permission.INTERNET

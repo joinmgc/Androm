@@ -1,0 +1,11 @@
+# Local lab keys, pairing tokens and observations
+.androm/
+.androm-init-*/
+dist/
+node_modules/
+.gradle/
+.kotlin/
+build/
+local.properties
+.idea/
+*.iml

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Androm Lab · مرصد الجلسات</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/lab.js"></script>
+</head>
+<body>
+  <header><div class="wrap bar"><b class="brand" lang="en" dir="ltr">Androm <span>Lab</span></b><span id="link" role="status">جارٍ الاتصال باللوحة…</span></div></header>
+  <main class="wrap">
+    <h1>مرصد الجلسات</h1>
+    <div class="workspace">
+      <section aria-labelledby="sessions"><h2 id="sessions">الجلسات المتصلة <span id="count">0</span></h2>
+        <ul id="clients"></ul>
+        <p id="empty-clients">افتح التطبيق على هاتف الاختبار ثم اضغط «اتصال».</p>
+      </section>
+      <section aria-labelledby="exercise"><h2 id="exercise">تمرين المطابقة</h2>
+        <form id="form">
+          <label for="client">جلسة الطالب</label><select id="client" required></select>
+          <label for="scenario">العينة المتوقعة</label><select id="scenario" required></select>
+          <p id="hint"></p>
+          <button id="assign" disabled>تسجيل التوقّع</button>
+          <output id="feedback" role="status"></output>
+        </form>
+      </section>
+    </div>
+    <section class="journal" aria-labelledby="history"><h2 id="history">سجل المختبر</h2>
+      <p id="empty-history">يظهر أول سجل عند تسجيل توقّع أو إرسال عينة من الهاتف.</p>
+      <div class="scroll"><table hidden id="table">
+        <thead><tr><th>الوقت المحلي</th><th>الجلسة</th><th>الحدث</th><th>النتيجة</th><th>بيانات العينة</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table></div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/page" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#F3F5EF" android:fillViewport="true" android:layoutDirection="rtl">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:padding="24dp" android:orientation="vertical">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Androm Lab" android:textDirection="ltr" android:textColor="#193D37"
+            android:textSize="32sp" android:textStyle="bold" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:text="اختر عينة اصطناعية وأرسل معرّفها إلى لوحة المختبر."
+            android:textSize="16sp" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" android:labelFor="@+id/endpoint" android:text="عنوان خادم المختبر" />
+        <EditText android:id="@id/endpoint" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:inputType="textUri" android:singleLine="true" android:textDirection="ltr"
+            android:text="wss://127.0.0.1:8443" android:importantForAutofill="no" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:labelFor="@+id/token" android:text="رمز الاقتران" />
+        <EditText android:id="@id/token" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:inputType="textPassword" android:singleLine="true" android:textDirection="ltr"
+            android:saveEnabled="false" android:importantForAutofill="no" />
+        <Button android:id="@+id/connect" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="اتصال" />
+        <TextView android:id="@+id/status" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:accessibilityLiveRegion="polite" android:text="الجلسة مغلقة" android:textColor="#17554A" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" android:labelFor="@+id/scenario" android:text="عينة التمرين" />
+        <Spinner android:id="@id/scenario" android:layout_width="match_parent" android:layout_height="48dp" />
+        <TextView android:id="@+id/preview" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginVertical="12dp" android:background="#E3EAE2" android:fontFamily="monospace"
+            android:padding="16dp" android:textDirection="ltr" android:textIsSelectable="true" />
+        <Button android:id="@+id/send" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:enabled="false" android:text="إرسال معرّف العينة" />
+        <TextView android:id="@+id/delivery" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:accessibilityLiveRegion="polite" />
+    </LinearLayout>
+</ScrollView>

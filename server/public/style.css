@@ -1,0 +1,32 @@
+:root { color-scheme: light; font: 16px/1.65 "Segoe UI", Tahoma, sans-serif; color: #193e37; background: #f5f6f0; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+.wrap { width: min(1100px, 92%); margin-inline: auto; }
+header { color: #f6faf4; background: #193e37; }
+.bar { min-height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.brand { font-family: Inter, sans-serif; font-size: 1.3rem; }
+.brand span { color: #a8d1ae; }
+h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 2rem 0 1.25rem; }
+h2 { font-size: 1.25rem; margin: 0 0 1rem; }
+.workspace { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+section { background: #fffefa; border: 1px solid #cbd6ca; padding: 1.5rem; border-radius: .7rem; }
+#count { display: inline-block; padding: 0 .5rem; color: #12614e; background: #e2efe4; border-radius: .3rem; }
+form { display: grid; gap: .4rem; }
+label { font-weight: 600; }
+select, button { font: inherit; padding: .45rem .75rem; border: 1px solid #a9bbb0; border-radius: .3rem; }
+select { background: white; min-width: 0; max-width: 100%; }
+button { background: #225949; color: white; cursor: pointer; font-weight: 600; }
+button:disabled { background: #d9e2da; color: #4b5d53; cursor: default; }
+:focus-visible { outline: 3px solid #b76827; outline-offset: 2px; }
+p { margin: .5rem 0; color: #4e635b; }
+ul { list-style: none; padding: 0; margin: 0; }
+li { border-bottom: 1px solid #e1e6dd; padding: .5rem 0; }
+li span { display: block; }
+.journal { margin: 1.25rem 0 2.5rem; }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: .92rem; }
+td, th { text-align: start; padding: .65rem; border-bottom: 1px solid #dce4d9; vertical-align: top; }
+th { background: #edf2e9; white-space: nowrap; }
+code { direction: ltr; unicode-bidi: isolate; display: inline-block; overflow-wrap: anywhere; }
+td code { max-width: 27rem; white-space: pre-wrap; }
+@media (max-width: 700px) { .workspace { grid-template-columns: 1fr; } section { padding: 1rem; } }
